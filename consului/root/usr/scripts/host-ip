@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv sh
+
+#
+# This script will determine the network IP of the container.
+#
+
+# On docker cloud, we want the overlayed network IP instead of the host
+echo $DOCKERCLOUD_IP_ADDRESS | sed s/\\/16//g

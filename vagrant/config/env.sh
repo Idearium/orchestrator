@@ -1,0 +1,2 @@
+export COMPOSE_PROJECT_NAME=orc
+export NODE_ENV=development

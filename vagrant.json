@@ -1,0 +1,11 @@
+{
+    "hostname": "idearium-orchestrator",
+    "hostAliases": "orchestrator.idearium.local",
+    "ip": "192.168.11.22",
+    "memory": 1024,
+    "cpus": 1,
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "timezone": "Australia/Adelaide"
+}

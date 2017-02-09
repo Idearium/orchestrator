@@ -43,3 +43,9 @@ There are two tags used to initiate automated builds:
 Whenever one of, or both of these tags are pushed, Docker Cloud will create an image with the same tag as the version, and a `latest`. For example, pushing a GitHub tag of `consul-v2.0.0` will produce `idearium/consul:2.0.0` and `idearium/consul:latest`.
 
 `latest` is just a convenience which can be used in stack files, but should never be used in a Dockerfile (as these images are).
+
+## Configuration
+
+These images should just run out of the box, so there are few configuration options (other than what is already provided by the base images).
+
+However, you can alter the user in which `go-dnsmasq` is run as. Simply set `GO_DNSMASQ_USER` as an environment variable to determine the user in which `go-dnsmasq` will be run as. It defaults to `go-dnsmasq` (a user with privileges to bind to port 80 via SET_CAP_NET_BIND).

@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv sh
+
+# Allow downstream users to customise which user starts go-dnsmasq
+if [ -z "$GO_DNSMASQ_USER" ]; then
+    printf "go-dnsmasq" > /var/run/s6/container_environment/GO_DNSMASQ_USER
+fi

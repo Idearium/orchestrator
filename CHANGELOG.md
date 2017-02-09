@@ -2,11 +2,11 @@
 
 ## Unreleased
 
-- You can now set the ENV `GO_DNSMASQ_USER` in `consul` and `consului` to change which user go-dnsmasq is run as. Defaults to `go-dnsmasq` so that nothing changes unless you set the `GO_DNSMASQ_USER` ENV variable.
+- You can now set the ENV variable `GO_DNSMASQ_USER` in `consul` and `consului` to change which user `go-dnsmasq` is run as. Defaults to `go-dnsmasq` so that nothing changes unless you set the `GO_DNSMASQ_USER` ENV variable.
 
 ## 1.0.0
 
-This is the first cut of the code, after transferring from the Flashmedia repository.
+This is the first cut of the code, after transferring from the FDM repository.
 
 ### Features
 

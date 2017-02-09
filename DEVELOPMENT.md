@@ -48,7 +48,7 @@ There is also one used only for testing:
 
 ### Building
 
-You can build these images locally using `c up`, `c build` and `c rebuild`. These images are built for production using Docker Cloud. Autobuilt repositories have been setup and will automatically build for you on certain events:
+You can build these images locally using `c up`, `c build` and `c rebuild`. These images are built for production using Docker Cloud. The repositories on Docker Cloud have been setup and will automatically build for you on certain events:
 
 - Pushing to `dev` branch will build the `:dev` version of these images.
 - Pushing a tag in the format `{image-name}-v{semver}` will build the images, with the corresponding version tag.

@@ -1,4 +1,4 @@
-FROM smebberson/alpine-consul-nodejs:5.3.0
+FROM smebberson/alpine-consul-nodejs:5.11.0-beta.1
 MAINTAINER Scott Mebberson <scott@scottmebberson.com>
 
 # Build the npm modules.

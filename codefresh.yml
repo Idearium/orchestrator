@@ -1,0 +1,115 @@
+version: '1.0'
+
+steps:
+
+  # Build the consul image
+  ConsulImage:
+    title: Building consul Docker image
+    type: build
+    image_name: idearium/consul
+    working_directory: ./consul
+    dockerfile: Dockerfile
+    tag: ${{CF_BRANCH}}
+
+  # Build the consului image
+  ConsulUiImage:
+    title: Building consului Docker image
+    type: build
+    image_name: idearium/consului
+    working_directory: ./consului
+    dockerfile: Dockerfile
+    tag: ${{CF_BRANCH}}
+
+  # Conditionally deploy the consul:beta image
+  DeployBetaConsulImage:
+    title: Pushing consul (beta) to Docker Hub
+    type: push
+    candidate: ${{ConsulImage}}
+    image_name: idearium/consul
+    tag: beta
+    credentials:
+      username: '${{dockerHubUsername}}'
+      password: '${{dockerHubPassword}}'
+    when:
+      condition:
+        all:
+          betaBranch: 'includes(lower("${{CF_BRANCH}}"), "beta") == true'
+          isTag: 'includes(lower("${{CF_BRANCH}}"), "v") == true'
+
+  # Conditionally deploy the consul:latest image
+  DeployLatestConsulImage:
+    title: Pushing consul (latest) to Docker Hub
+    type: push
+    candidate: ${{ConsulImage}}
+    image_name: idearium/consul
+    tag: latest
+    credentials:
+      username: '${{dockerHubUsername}}'
+      password: '${{dockerHubPassword}}'
+    when:
+      condition:
+        all:
+          notBetaBranch: 'includes(lower("${{CF_BRANCH}}"), "beta") != true'
+          isTag: 'includes(lower("${{CF_BRANCH}}"), "v") == true'
+
+  # Conditionally deploy the consul:${{CF_BRANCH}} image
+  DeployTaggedConsulImage:
+    title: Pushing consul (tagged) to Docker Hub
+    type: push
+    candidate: ${{ConsulImage}}
+    image_name: idearium/consul
+    tag: ${{CF_BRANCH}}
+    credentials:
+      username: '${{dockerHubUsername}}'
+      password: '${{dockerHubPassword}}'
+    when:
+      condition:
+        all:
+          isTag: 'includes(lower("${{CF_BRANCH}}"), "v") == true'
+
+  # Conditionally deploy the consului:beta image
+  DeployBetaConsulUiImage:
+    title: Pushing consului (beta) to Docker Hub
+    type: push
+    candidate: ${{ConsulUiImage}}
+    image_name: idearium/consului
+    tag: beta
+    credentials:
+      username: '${{dockerHubUsername}}'
+      password: '${{dockerHubPassword}}'
+    when:
+      condition:
+        all:
+          betaBranch: 'includes(lower("${{CF_BRANCH}}"), "beta") == true'
+          isTag: 'includes(lower("${{CF_BRANCH}}"), "v") == true'
+
+  # Conditionally deploy the consului:latest image
+  DeployLatestConsulUiImage:
+    title: Pushing consului (latest) to Docker Hub
+    type: push
+    candidate: ${{ConsulUiImage}}
+    image_name: idearium/consului
+    tag: latest
+    credentials:
+      username: '${{dockerHubUsername}}'
+      password: '${{dockerHubPassword}}'
+    when:
+      condition:
+        all:
+          notBetaBranch: 'includes(lower("${{CF_BRANCH}}"), "beta") != true'
+          isTag: 'includes(lower("${{CF_BRANCH}}"), "v") == true'
+
+  # Conditionally deploy the consului:${{CF_BRANCH}} image
+  DeployTaggedConsulUiImage:
+    title: Pushing consului (tagged) to Docker Hub
+    type: push
+    candidate: ${{ConsulUiImage}}
+    image_name: idearium/consului
+    tag: ${{CF_BRANCH}}
+    credentials:
+      username: '${{dockerHubUsername}}'
+      password: '${{dockerHubPassword}}'
+    when:
+      condition:
+        all:
+          isTag: 'includes(lower("${{CF_BRANCH}}"), "v") == true'

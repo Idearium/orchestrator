@@ -1,6 +1,6 @@
 # Orchestrator Changelog
 
-## Unreleased
+## 1.1.0-beta-1
 
 - Upgraded `consul` to `smebberson/alpine-consul:3.2.0-beta.1` (newer version of Consul).
 - Upgraded `consul-ui` to `smebberson/alpine-consul-ui:2.2.0-beta.1` (newer version of Consul).

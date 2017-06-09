@@ -48,4 +48,4 @@ Whenever one of, or both of these tags are pushed, Docker Cloud will create an i
 
 These images should just run out of the box, so there are few configuration options (other than what is already provided by the base images).
 
-However, you can alter the user in which `go-dnsmasq` is run as. Simply set `GO_DNSMASQ_USER` as an environment variable to determine the user in which `go-dnsmasq` will be run as. It defaults to `go-dnsmasq` (a user with privileges to bind to port 80 via SET_CAP_NET_BIND).
+However, you can alter the user in which `go-dnsmasq` is run as. Simply set `GO_DNSMASQ_RUNAS` as an environment variable to determine the user in which `go-dnsmasq` will be run as. It defaults to `root` because of ongoing issues with `setcap` and Docker on certain platforms.

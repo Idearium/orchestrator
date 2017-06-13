@@ -1,6 +1,8 @@
 FROM smebberson/alpine-consul-nodejs:5.11.0-beta.1
 MAINTAINER Scott Mebberson <scott@scottmebberson.com>
 
+RUN apk add --update --no-cache util-linux
+
 # Build the npm modules.
 ADD root/app/package.json /app/package.json
 RUN cd /app && npm install --production

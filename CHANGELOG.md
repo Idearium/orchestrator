@@ -1,5 +1,9 @@
 # Orchestrator Changelog
 
+## 1.1.0-beta-2
+
+- Upgraded `consul-node-id` to use `uuidgen`.
+
 ## 1.1.0-beta-1
 
 - Upgraded `consul` to `smebberson/alpine-consul:3.2.0-beta.1` (newer version of Consul).

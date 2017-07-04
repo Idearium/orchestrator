@@ -1,6 +1,6 @@
 # Orchestrator Changelog
 
-## 1.1.0-beta-2
+## 1.1.0-beta-3
 
 - Upgraded to newer versions of `smebberson/alpine-consul` and `smebberson/alpine-consul` which contain the fixes from `1.1.0-beta.2`.
 

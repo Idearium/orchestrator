@@ -19,6 +19,11 @@ The `docker-compose.yml` and `stack.yml` file demonstrate how to configure a com
 
 To run locally, use `c up` which uses `docker-compose.yml` for orchestration.
 
+You can access the following:
+
+- http://orchestrator.idearium.local:8500/
+- http://orchestrator.idearium.local:4000/
+
 ### Docker Cloud
 
 To run on Docker Cloud, create a new node and run the `stack.yml` file.

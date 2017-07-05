@@ -38,16 +38,15 @@ To develop these images, please see the [development](./DEVELOPMENT.md) guide.
 
 ## Production
 
-These images are pushed to production by simply tagging and pushing to GitHub. Docker Cloud will pick up on these tags and automatically build the images remotely.
+These images are pushed to production by simply tagging and pushing to GitHub. [Codefresh](https://g.codefresh.io/repositories/idearium/orchestrator/builds?filter=trigger:build) will pick up on these tags and automatically build the images remotely.
 
-There are two tags used to initiate automated builds:
+Simply tag the repository and push the tag to GitHub. Use standard semver semantics to tag the repository. Codefresh will build based on the following rules:
 
-- `consul-vx.x.x` will build the `consul` image.
-- `consului-vx.x.x` will build the `consului` image.
+- If the tag includes `beta`, i.e. `v1.0.0-beta.1` it will use the `:beta` tag.
+- If the tag does not include `beta`, i.e. `v1.0.0` it will use the `:latest` tag.
+- All tags will result in an images of the same tag being built, i.e. a tag of `v1.0.0-beta.1` will produce an image tagged `:1.0.0-beta.1`.
 
-Whenever one of, or both of these tags are pushed, Docker Cloud will create an image with the same tag as the version, and a `latest`. For example, pushing a GitHub tag of `consul-v2.0.0` will produce `idearium/consul:2.0.0` and `idearium/consul:latest`.
-
-`latest` is just a convenience which can be used in stack files, but should never be used in a Dockerfile (as these images are).
+`:latest` is just a convenience which can be used in stack files, but should never be used in a Dockerfile (as these images are).
 
 ## Configuration
 

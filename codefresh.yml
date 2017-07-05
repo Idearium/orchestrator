@@ -9,7 +9,7 @@ steps:
     image_name: idearium/consul
     working_directory: ./consul
     dockerfile: Dockerfile
-    tag: ${{CF_BRANCH}}
+    tag: ${{CF_BRANCH_VERSION_NORMALIZED}}
 
   # Build the consului image
   ConsulUiImage:
@@ -18,7 +18,7 @@ steps:
     image_name: idearium/consului
     working_directory: ./consului
     dockerfile: Dockerfile
-    tag: ${{CF_BRANCH}}
+    tag: ${{CF_BRANCH_VERSION_NORMALIZED}}
 
   # Conditionally deploy the consul:beta image
   DeployBetaConsulImage:
@@ -58,7 +58,7 @@ steps:
     type: push
     candidate: ${{ConsulImage}}
     image_name: idearium/consul
-    tag: ${{CF_BRANCH}}
+    tag: ${{CF_BRANCH_VERSION_NORMALIZED}}
     credentials:
       username: '${{dockerHubUsername}}'
       password: '${{dockerHubPassword}}'
@@ -105,7 +105,7 @@ steps:
     type: push
     candidate: ${{ConsulUiImage}}
     image_name: idearium/consului
-    tag: ${{CF_BRANCH}}
+    tag: ${{CF_BRANCH_VERSION_NORMALIZED}}
     credentials:
       username: '${{dockerHubUsername}}'
       password: '${{dockerHubPassword}}'
